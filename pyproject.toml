@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ems-esp-flasher-cli"
+version = "2.0.0"
+description = "CLI tool to flash EMS-ESP firmware to ESP32 boards"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "typer>=0.9",
+    "requests>=2.32",
+    "pyserial>=3.5",
+    "esptool>=4.0",
+]
+
+[project.scripts]
+ems-esp-flasher = "ems_esp_flasher.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ems_esp_flasher"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+]
